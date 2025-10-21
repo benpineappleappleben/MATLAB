@@ -19,8 +19,11 @@ function fig = ScalarFit_GUI()
 %
 % For example, say you wanted to fit your data to the function c(1) + 
 % c(2)*x^2. The proper format of the entry in the "Custom" box would be
-% @(c,x) c(1) + c(2)*x^2. Since there are two parameters to be fit, your
-% guess vector should have two elements as well.
+% @(c,x) c(1) + c(2)*x.^2. Since there are two parameters to be fit, your
+% guess vector should have two elements as well. Since MATLAB likes to
+% vectorize inputs when fitting, it is best to interpret x as a vector and
+% to force MATLAB to perform elementwise operations as necessary. Failing
+% to do this may cause an error.
 % 
 % Once you've specified your functional form, you must enter the path to
 % the file containing the data to be fitted. This file should be a
@@ -97,14 +100,14 @@ r_squared_result_box = uicontrol('Parent', fig, 'Style', 'text', 'String', ' ', 
 
         v = cat(1,v,{'GUI';'true'});
 
-        a = ScalarFit(form,data,guess,v);
-        set(error_result_box,'String',num2str(a(length(a))))
+        c = ScalarFit(form,data,guess,v);
+        set(error_result_box,'String',num2str(c(length(c))))
         TSS = sum((mean(data(:,2)) - data(:,2)).^2);
-        set(r_squared_result_box,'String',string(vpa(1-(a(length(a))/TSS),10)))
+        set(r_squared_result_box,'String',string(vpa(1-(c(length(c))/TSS),10)))
 
         output_parameters = '';
-        for j = 1:1:length(a)
-            output_parameters = cat(2,output_parameters,['c(',num2str(j),')=',num2str(a(j)),'   ']);
+        for j = 1:1:length(c)-1
+            output_parameters = cat(2,output_parameters,['c(',num2str(j),')=',num2str(c(j)),'   ']);
         end
         set(result_textbox,'String',output_parameters)
     end
