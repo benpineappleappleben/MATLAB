@@ -1,0 +1,45 @@
+\documentclass[8pt]{extarticle}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor,soul,enumitem,tocloft,amsmath,amssymb,amsthm,amsfonts,graphicx,hyperref,mathtools,setspace,fancyhdr,multicol,braket}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[version=4]{mhchem}
+
+\setlength{\headheight}{15pt}
+
+% EM DASH: —
+% DEGREE SYMBOL: °
+
+\begin{document}
+  \newgeometry{left=0.25in, right=0.25in, top=1in, bottom=1in}
+  \pagestyle{fancy}
+  \fancyhead[C]{ScalarFit Functional Forms (v1.0.0)}
+  \begin{center}
+    \textbf{IN ALL CASES, THE GUESS VECTOR IS DEFINED AS $[c_1, c_2, c_3,...,c_n]$ AS REQUIRED BY THE FUNCTIONAL FORM.}
+  \end{center}
+  \vspace{30pt}
+  \begin{multicols}{3}
+  \section*{Cubic}
+  $$y=c_1x^3+c_2x^2+c_3x+c_4$$
+  \section*{Exponential}
+  $$y=c_1\exp(c_2x)+c_3$$
+  \section*{Gaussian}
+  $$y=c_1\exp\left(-c_2(x-c_3)^2\right)+c_4$$
+  \section*{Linear}
+  $$y=c_1x+c_2$$
+  \section*{Logarithmic}
+  $$c_1\ln(x-c_2)+c_3$$
+  \section*{Logistic}
+  $$y=\frac{c_1c_2\exp(c_3x)}{c_1-c_2+c_2\exp(c_3x)}$$
+  \section*{Polynomial}
+  $$y=\sum_{i=1}^{n}{c_ix^{i-1}}$$
+  This functional form does not enforce a specific guess size. Instead, it fits the data to a polynomial with degree $n-1$ where $n$ is the length of the guess vector.
+  \section*{Quadratic}
+  $$y=c_1(x-c_2)^2+c_3$$
+  \section*{Rational}
+  $$y=\frac{\sum_{i=1}^{m}{c_ix^{i-1}}}{\sum_{i=m+1}^{m+n}{c_ix^{i-(m+1)}}}$$
+  The case of the rational functional form is treated as the ratio of two polynomial functional forms. The guess vector should have length $m+n$. The degree of the polynomial in the numerator is $m-1$. The degree of polynomial in the denominator is $n-1$.
+  \section*{Sinusoid}
+  $$y=c_1\sin(c_2x-c_3)+c_4$$
+  \end{multicols}
+\end{document}

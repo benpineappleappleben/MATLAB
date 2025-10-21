@@ -1,0 +1,30 @@
+# Ignore LaTeX auxiliary files
+*.aux
+*.asv
+*.bib
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.nav
+*.snm
+*.bbl
+*.blg
+*.run.xml
+
+# Ignore temporary and backup files
+*.bak
+*.backup
+*.swp
+*.tmp
+*.temp
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore editor config files
+*.vscode/
+*.idea/
