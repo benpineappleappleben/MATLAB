@@ -191,47 +191,47 @@ if nargin > 3
         if nargin == 4
             varargin = varargin{1};
         end
-        for i = 4:2:nargin
-            if isequal(varargin{i-3},'Bounds')
-                if isequal(class(varargin{i-2}),'char')
-                    temp = str2num(varargin{i-2});
+        for i = 1:2:length(varargin)
+            if isequal(varargin{i},'Bounds')
+                if isequal(class(varargin{i}),'char')
+                    temp = str2num(varargin{i+1});
                 else
-                    temp = varargin{i-2};
+                    temp = varargin{i};
                 end
                 for i2 = 1:3:length(temp)-2
                     bounds{temp(i2)} = [temp(i2+1) temp(i2+2)];
                 end
-            elseif isequal(varargin{i-3},'GUI')
-                if isequal(varargin{i-2},'true') || isequal(varargin{i-2},'True') || isequal(varargin{i-2},'TRUE') || isequal(varargin{i-2},true)
+            elseif isequal(varargin{i},'GUI')
+                if isequal(varargin{i+1},'true') || isequal(varargin{i+1},'True') || isequal(varargin{i+1},'TRUE') || isequal(varargin{i+1},true)
                     fitgui = true;
                 end
-            elseif isequal(varargin{i-3},'FittingParameters')
-                if isequal(class(varargin{i-2}),'char')
-                    fitting_parameters = str2num(varargin{i-2});
+            elseif isequal(varargin{i},'FittingParameters')
+                if isequal(class(varargin{i+1}),'char')
+                    fitting_parameters = str2num(varargin{i+1});
                 else
-                    fitting_parameters = varargin{i-2};
+                    fitting_parameters = varargin{i+1};
                 end
                 if isequal(size(fitting_parameters),size(guess)) == false
                     error(sprintf('The size of your guess and fitting parameter vectors must be the same.\nMake sure that the fitting parameter vector is a row vector.'))
                 end
-            elseif isequal(varargin{i-3},'MaxFunEvals')
+            elseif isequal(varargin{i},'MaxFunEvals')
                 if isequal(class(varargin{i-2}),'char')
-                    MaxFunEvals = str2num(varargin{i-2});
+                    MaxFunEvals = str2num(varargin{i+1});
                 else
-                    MaxFunEvals = varargin{i-2};
+                    MaxFunEvals = varargin{i+1};
                 end
-            elseif isequal(varargin{i-3},'OverridePlot')
-                if isequal(varargin{i-2},'true') || isequal(varargin{i-2},'True') || isequal(varargin{i-2},'TRUE') || isequal(varargin{i-2},true)
+            elseif isequal(varargin{i},'OverridePlot')
+                if isequal(varargin{i+1},'true') || isequal(varargin{i+1},'True') || isequal(varargin{i+1},'TRUE') || isequal(varargin{i+1},true)
                     override_plot = true;
                 end
-            elseif isequal(varargin{i-3},'SizeNum')
-                if isequal(class(varargin{i-2}),'char')
-                    sizenum = str2num(varargin{i-2});
+            elseif isequal(varargin{i},'SizeNum')
+                if isequal(class(varargin{i+1}),'char')
+                    sizenum = str2num(varargin{i+1});
                 else
-                    sizenum = varargin{i-2};
+                    sizenum = varargin{i+1};
                 end
-            elseif isequal(varargin{i-3},'SpecFcn')
-                specfcn = varargin{i-2};
+            elseif isequal(varargin{i},'SpecFcn')
+                specfcn = varargin{i+1};
                 if ~isequal(class(specfcn),'function_handle')
                     error(sprintf(['Your function for the SpecFcn name-value pair is a ',class(specfcn),' not a\n' ...
                         'function handle.']))
@@ -379,7 +379,7 @@ TSS = sum((mean(data(:,2)) - data(:,2)).^2);
 r_squared = 1-(e/TSS);
 disp(['R² = ',num2str(r_squared)])
 
-if isequal(fitgui,'true')
+if isequal(fitgui,true)
     p = cat(2,p,e);
 end
 
