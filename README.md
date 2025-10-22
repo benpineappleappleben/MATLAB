@@ -1,2 +1,7 @@
-MATLAB: General Purpose MATLAB Files Applicable Anywhere
-A place to store my MATLAB files that have general utility outside of the laboratory and other personal places. Code and scripts specific to RRG are stored in that repository under the MATLAB sub-directory.
+# MATLAB: General Purpose MATLAB Files Applicable Anywhere
+
+This repository serves as a collection of my **general-purpose MATLAB functions, scripts, and utilities** that are broadly useful across different contexts.  
+
+These files are **not specific to any particular project or laboratory** — they are meant to provide reusable, standalone functionality for a variety of applications.
+
+> **Note:** Code and scripts that are specific to the **RRG** project are stored separately in that repository, under its `MATLAB/` subdirectory.
