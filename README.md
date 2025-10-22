@@ -4,4 +4,4 @@ This repository serves as a collection of my **general-purpose MATLAB functions,
 
 These files are **not specific to any particular project or laboratory** — they are meant to provide reusable, standalone functionality for a variety of applications.
 
-> **Note:** Code and scripts that are specific to the **RRG** project are stored separately in that repository, under its `MATLAB/` subdirectory.
+> **Note:** Code and scripts that are specific to **RRG** are stored separately in that repository, under its `MATLAB/` subdirectory.
