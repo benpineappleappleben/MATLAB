@@ -1,43 +1,40 @@
 function fig = ScalarFit_GUI()
-% DESCRIPTION--------------------------------------------------------------
-% 
-% ScalarFit_GUI packages the functionality of ScalarFit into a GUI for the sake of
-% ease of use. To open the GUI, hit the run button up top or call the
-% function with no arguments in the command window. To learn more about the
-% functionality of the fitting algorithm and information about the name-
-% value pairs box, check out the help article written for ScalarFit.
-% 
-% USING THE GUI------------------------------------------------------------
-% 
-% After initializing the GUI, you must first select an option for the
-% functional form in the dropdown menu. If you don't see your function of
-% interest in the menu, choose the "Custom (Define Function)" option and
-% hard-code your function in "Custom" box to the right. It should be
-% entered in the format @(c,x) f(c,x) where c is a vector of parameters to
-% be fit and x is a one-dimensional independent variable. If you do not
-% want to specify a custom function, leave this box blank.
+% SCALARFIT_GUI  Opens a GUI wrapper for the ScalarFit fitting utility.
 %
-% For example, say you wanted to fit your data to the function c(1) + 
-% c(2)*x^2. The proper format of the entry in the "Custom" box would be
-% @(c,x) c(1) + c(2)*x.^2. Since there are two parameters to be fit, your
-% guess vector should have two elements as well. Since MATLAB likes to
-% vectorize inputs when fitting, it is best to interpret x as a vector and
-% to force MATLAB to perform elementwise operations as necessary. Failing
-% to do this may cause an error.
-% 
-% Once you've specified your functional form, you must enter the path to
-% the file containing the data to be fitted. This file should be a
-% two-column matrix where the independent variable is in the first column
-% and the dependent variable is in the second column.
-% 
-% The last necessary component in the call is the guess. In order for ScalarFit
-% to fit a function to data, you have to give it a starting place that is
-% close to the guess. The guess doesn't have to be perfect, but the closer
-% it is, the more accurate the output will be and the quicker it will run.
-% 
-% To learn more about the name-value arguments and a list of the functional
-% forms, check out ScalarFit and the document called "ScalarFit Functional Forms 
-% v1.0.1.pdf".
+% DESCRIPTION -------------------------------------------------------------
+% ScalarFit_GUI provides a user-friendly graphical interface for the
+% ScalarFit algorithm. To launch the GUI, run this function without input
+% arguments or press the Run button in the MATLAB Editor. For information
+% about the fitting algorithm and the name-value pairs, refer to the help
+% article for ScalarFit.
+%
+% USING THE GUI -----------------------------------------------------------
+% After opening the GUI, first choose a functional form from the dropdown
+% list. If your desired function is not listed, select "Custom (Define
+% Function)" and enter it in the Custom box. Use the format @(c,x) f(c,x),
+% where c is a vector of parameters and x is the independent variable. Leave
+% the box empty if you do not need a custom function.
+%
+% For example, to fit a model of the form c(1) + c(2)*x^2, type:
+%   @(c,x) c(1) + c(2)*x.^2
+% Since this function has two parameters, the initial guess vector must
+% also contain two elements. MATLAB performs vectorized operations during
+% fitting, so ensure all expressions use elementwise operators (e.g., .^,
+% .*, ./). Otherwise, errors may occur.
+%
+% Next, specify the path to the data file to be fitted. The file must be a
+% two-column matrix, with the independent variable in the first column and
+% the dependent variable in the second.
+%
+% Finally, provide an initial guess vector. This guess serves as the
+% starting point for the fit. It need not be exact, but better guesses
+% improve both speed and accuracy.
+%
+% For details on available name-value arguments and predefined functional
+% forms, see the documentation for ScalarFit and the file:
+%   "ScalarFit Functional Forms v1.0.1.pdf"
+%
+% -------------------------------------------------------------------------
 
 % /////////////////////////
 % Benjamin Van Schaick

@@ -46,10 +46,15 @@ function p = ScalarFit(form,data,guess,varargin)
 % like to impose boundaries on. The second index is the lower bound, and
 % the third index is the upper bound. You can impose boundaries on as many
 % variables as you'd like, but the same trinumeric pattern must be kept.
-% This means that the length of the vector will be a multiple of three.
+% This means that the length of the vector will be a multiple of three. It
+% is very important that you use a space to delimit entries in this vector.
+% ScalarFit will interpret a comma-delimited vector as multiple function
+% inputs and not as multiple entries in the vector.
 %
 % (2) 'GUI' → A logical true or false indicating whether or not the
-% ScalarFit call originated from the GUI interface.
+% ScalarFit call originated from the GUI interface. This name-value pair is
+% automatically appended to your call if it originated from the GUI, so you
+% do not need to explicitly mention anything here.
 %
 % (3) 'FittingParameters' → A vector of ones and zeros with the same
 % size as the guess vector. In this vector, if the index value is equal to
@@ -93,7 +98,7 @@ function p = ScalarFit(form,data,guess,varargin)
 % /////////////////////////
 % Benjamin Van Schaick
 % Version 1.0.0
-% Date Modified: 11/15/2024
+% Date Modified: 10/22/2025
 % /////////////////////////
 
 % Reformat to add c
