@@ -101,9 +101,6 @@ function p = ScalarFit(form,data,guess,varargin)
 % Date Modified: 10/22/2025
 % /////////////////////////
 
-% Reformat to add c
-% Add only fitting a subset of data in your data matrix.
-
 % -----------------------(1) Parse Inputs----------------------------------
 
 % (1.1) Data Matrix Manipulation
