@@ -14,7 +14,7 @@ function point_xyz = ray_intersect(F, origin, direction, t_min, t_max,varargin)
 % - t_min and t_max are scalars for the search distance
 % - varargin is for later use.
 
-n_t_steps = 1e5;
+n_t_steps = 1e3;
 
 % Parametrize the ray
 origin = origin(:)'; direction = direction(:)';
@@ -30,7 +30,7 @@ idxs = find(diff(sign(F_values)) ~= 0); % indices of intersection in t-space
 if isempty(idxs)
     error('No intersection found. Consider a different t range, finer t-stepping, and the ray direction.')
 end
-t_guess = t(idxs(1)); % We know that the first (and closest) intersection point is between t(idxs(1)) and t(idxs(2))
+t_guess = 0.5*(t(idxs(1))+t(idxs(2))); % We know that the first (and closest) intersection point is between t(idxs(1)) and t(idxs(2))
 F_opt = @(t) (F_path(t)).^2;
 point_t = fminsearch(F_opt,t_guess);
 point_xyz = ray(point_t);
