@@ -85,67 +85,79 @@ function v = unitParse(u)
         if ~isequal(u,'eV')
             v = 'eV';
             token_warning = 'energy in eV';
+            token_standard = v;
         end
     elseif isequal(u,'Gauss') || isequal(u,'gauss')
         if ~isequal(u,'Gauss')
             v = 'Gauss';
             token_warning = 'magnetic field strength in Gauss';
+            token_standard = v;
         end
     elseif isequal(u,'Hertz') || isequal(u,'hertz') || isequal(u,'s^-1') || isequal(u,'s^(-1)') || isequal(u,'s^{-1}')
         if ~isequal(u,'Hertz')
             v = 'Hertz';
             token_warning = 'frequency in Hertz';
+            token_standard = v;
         end
     elseif isequal(u,'Hex') || isequal(u,'hex') || isequal(u,'Hex Code') || isequal(u,'HexCode') || isequal(u,'Hexadecimal') || isequal(u,'hexadecimal')
         if ~isequal(u,'Hex')
             v = 'Hex';
             token_warning = 'color code in hexadecimal';
+            token_standard = v;
         end
     elseif isequal(u,'J') || isequal(u,'Joules') || isequal(u,'joules')
         if ~isequal(u,'J')
             v = 'J';
             token_warning = 'energy in Joules';
+            token_standard = v;
         end
     elseif isequal(u,'micron') || isequal(u,'microns') || isequal(u,'um')
         if ~isequal(u,'um')
             v = 'um';
             token_warning = 'wavelength in micrometers';
+            token_standard = v;
         end
     elseif isequal(u,'nm^(-1)') || isequal(u,'nm^-1')
         if ~isequal(u,'nm^(-1)')
             v = 'nm^(-1)';
             token_warning = 'wavenumber in inverse nanometers';
+            token_standard = v;
         end
-    elseif isequal(u,'omega') || isequal(u,'rad/s') || isequal(u,'rad/sec')
+    elseif isequal(u,'omega') || isequal(u,'rad/s') || isequal(u,'rad/sec') || isequal(u,'angular frequency')
         if ~isequal(u,'rad/s')
             v = 'rad/s';
             token_warning = 'angular frequency in radians per second';
+            token_standard = v;
         end
     elseif isequal(u,'RGB') || isequal(u,'rgb')
         if ~isequal(u,'RGB')
             v = 'RGB';
             token_warning = 'color code in RGB';
+            token_standard = v;
         end
     elseif isequal(u,'Tesla') || isequal(u,'tesla') || isequal(u,'T')
         if ~isequal(u,'T')
             v = 'T';
             token_warning = 'magnetic field strength in Tesla';
+            token_standard = v;
         end
     elseif isequal(u,'Wavelength') || isequal(u,'wavelength') || isequal(u,'nm')
         if ~isequal(u,'nm')
             v = 'nm';
             token_warning = 'wavelength in nanometers';
+            token_standard = v;
         end
     elseif isequal(u,'Wavenumber') || isequal(u,'wavenumber') || isequal(u,'cm^-1') || isequal(u,'cm^(-1)') || isequal(u,'cm^{-1}')
         if ~isequal(u,'wavenumber')
             v = 'wavenumber';
             token_warning = 'wavenumber';
+            token_standard = v;
         end
     else
-        error('Initial unit not recognized. Verify that your units are supported.')
+        error(['Unit "',u,'" not recognized. Verify that your units are supported.'])
     end
     if ~isequal(token_warning,0)
-        warning(['Your unit (',u,') was taken to mean ',token_warning,' and was converted to the system standard.'])
+        warning(['Your unit (',u,') was taken to mean ',token_warning,' and was converted to the system standard (',token_standard,').'])
     end
 end
 end
