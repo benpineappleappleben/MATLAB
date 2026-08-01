@@ -195,11 +195,7 @@ if nargin > 3
         end
         for i = 1:2:length(varargin)
             if isequal(varargin{i},'Bounds')
-                if isequal(class(varargin{i}),'char')
-                    temp = str2num(varargin{i+1});
-                else
-                    temp = varargin{i};
-                end
+                temp = varargin{i+1};
                 for i2 = 1:3:length(temp)-2
                     bounds{temp(i2)} = [temp(i2+1) temp(i2+2)];
                 end
